@@ -7,21 +7,6 @@ void display_error()
     exit(EXIT_FAILURE);
 }
 
-// error: non integers, bigger than int max, or duplicate.
-// parse pour ajouter tous les nombres dans la linked list 1 a 1.
-// check si il sont deja dans la linked list, pour eviter doublon, si ya un doublon -> exit
-//faire un atoi qui avance tant quil y a des espaces, si il rencontre un truc autre quun espace
-// ou un chiffre -> exit(exit failure) 
-// penser a stocker lindex, apres avoir ajouter un nombre pour revenir au bon endroit
-
-// t_list *parsing_argument(char *str)
-// {
-//     int *index;
-
-//     *index = 0;
-
-// }
-
 int atoi_parsing(char *str, int *index)
 {
     long result;
@@ -42,7 +27,7 @@ int atoi_parsing(char *str, int *index)
     while (ft_isdigit(str[*index]))
     {
         result = (result * 10) + (str[*index] - '0');
-        (*index) ++;
+        (*index)++;
     }
     while (str[*index] == ' ')
         (*index) ++;
@@ -50,8 +35,18 @@ int atoi_parsing(char *str, int *index)
         display_error();
     return (result * divid);
 }   
+bool check_double(t_list *stack_a, int nb)
+{
+    t_list *current;
 
+    current = stack_a;
 
-
-
-
+    while (current)
+    {
+        if (current->content == nb)
+            return true;
+        else
+            current = current->next;
+    }
+    return false;
+}

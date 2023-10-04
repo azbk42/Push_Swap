@@ -13,8 +13,9 @@
 
 
 int atoi_parsing(char *str, int *index);
+bool check_double(t_list *stack_a, int nb);
 void start_push_swap(char **av, t_list *stack_a, t_list *stack_b);
-void print_stack(t_list **stack);
+void print_stacks(t_list *stack_a, t_list *stack_b); 
 t_list *create_stack_a(t_list *stack_a, int number);
 void display_error();
 
