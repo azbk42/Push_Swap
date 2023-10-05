@@ -7,7 +7,7 @@ t_list *create_stack_a(t_list *stack_a, int number)
    new = ft_lstnew(number);
    if (!new)
       return (NULL);
-   ft_lstadd_back(&stack_a, new);
+   ft_lstadd_front(&stack_a, new);
    return (stack_a);
 }
 

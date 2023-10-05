@@ -19,4 +19,12 @@ void print_stacks(t_list *stack_a, t_list *stack_b);
 t_list *create_stack_a(t_list *stack_a, int number);
 void display_error();
 
+
+
+// sort_functions
+
+void sort_sa_sb(t_list **stack, char c);
+void sort_ss(t_list **stack_a, t_list **stack_b);
+void push_b(t_list **stack_a, t_list **stack_b);
+void push_a(t_list **stack_a, t_list **stack_b);
 #endif

@@ -3,7 +3,7 @@ FLAGS = cc -Wall -Werror -Wextra
 LIBFT = includes/libft/libft.a
 PRINTF = includes/ft_printf/libftprintf.a
 RM = rm -f
-SRCS = main.c parsing.c utils_stack.c
+SRCS = main.c parsing.c utils_stack.c sort_function.c
 HEADERS = -I includes
 OBJS = ${SRCS:.c=.o}
 

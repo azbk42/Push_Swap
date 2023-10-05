@@ -24,6 +24,7 @@ void start_push_swap(char **av, t_list *stack_a, t_list *stack_b)
    stack_b = create_stack_a(stack_b, 80);
    // stack_a est cree maintenant on doit creer les algo.
    print_stacks(stack_a, stack_b);
+
 }
 
 int main(int ac, char **av) 
