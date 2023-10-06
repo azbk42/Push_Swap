@@ -1,4 +1,4 @@
-#include <stdio.h>
+
 #include "push_swap.h"
 
 
@@ -18,13 +18,16 @@ void start_push_swap(char **av, t_list *stack_a, t_list *stack_b)
          display_error();
       stack_a = create_stack_a(stack_a, result);
    }
-   stack_b = create_stack_a(stack_b, 50);
-   stack_b = create_stack_a(stack_b, 60);
-   stack_b = create_stack_a(stack_b, 70);
-   stack_b = create_stack_a(stack_b, 80);
+   stack_b = create_stack_a(stack_b, 10);
+   stack_b = create_stack_a(stack_b, 20);
+   stack_b = create_stack_a(stack_b, 30);
+   stack_b = create_stack_a(stack_b, 40);
    // stack_a est cree maintenant on doit creer les algo.
    print_stacks(stack_a, stack_b);
 
+   shift_rra_rrb(&stack_b, 'b');
+
+   print_stacks(stack_a, stack_b);
 }
 
 int main(int ac, char **av) 
