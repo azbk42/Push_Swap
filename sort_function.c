@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void sort_sa_sb(t_list **stack, char c)
+void swap_sa_sb(t_list **stack, char c)
 {
     int tmp;
     t_list *current;
@@ -17,10 +17,10 @@ void sort_sa_sb(t_list **stack, char c)
         ft_printf("ss\n");
 }
 
-void sort_ss(t_list **stack_a, t_list **stack_b)
+void swap_ss(t_list **stack_a, t_list **stack_b)
 {
-    sort_sa_sb(stack_a, '0');
-    sort_sa_sb(stack_b, 's');
+    swap_sa_sb(stack_a, '0');
+    swap_sa_sb(stack_b, 's');
 }
 
 void push_b(t_list **stack_a, t_list **stack_b)
