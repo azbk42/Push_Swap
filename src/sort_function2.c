@@ -2,6 +2,8 @@
 
 void shift_rra_rrb(t_list **stack, char c)
 {
+    if (*stack == NULL)
+        return;
     t_list *current;
     int tmp;
 
@@ -32,6 +34,8 @@ void shift_rr(t_list **stack_a, t_list **stack_b)
 }
 void shift_ra_rb(t_list **stack, char c)
 {
+    if (*stack == NULL)
+        return;
     t_list *current;
     t_list *new;
     int tmp;

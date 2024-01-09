@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:00:54 by azbreak           #+#    #+#             */
-/*   Updated: 2024/01/08 15:27:24 by azbk             ###   ########.fr       */
+/*   Updated: 2024/01/09 12:59:06 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_list
 {
 	int				content;
 	struct s_list	*next;
+	struct s_list	*prev;
 }					t_list;
 
 int					ft_isalpha(int c);

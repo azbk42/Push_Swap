@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:31:52 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/08 16:40:53 by azbk             ###   ########.fr       */
+/*   Updated: 2024/01/09 13:20:12 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,10 @@ void	start_push_swap(char **av, t_list *stack_a, t_list *stack_b)
 	else if (!check_empty_arg(av))
 		display_error("\nEmpty argument\n");
 	stack_a = setup_stack(av, index, stack_a);
-	stack_b = create_stack_a(stack_b, 10);
-	stack_b = create_stack_a(stack_b, 20);
-	stack_b = create_stack_a(stack_b, 30);
-	stack_b = create_stack_a(stack_b, 40);
 	printf("\n");
 	print_stacks(stack_a, stack_b);
-	// shift_rra_rrb(&stack_b, 'b');
-	// print_stacks(stack_a, stack_b);
+	swap_sa_sb(&stack_b, 'b');
+	print_stacks(stack_a, stack_b);
 }
 
 

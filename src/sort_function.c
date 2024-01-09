@@ -2,6 +2,8 @@
 
 void swap_sa_sb(t_list **stack, char c)
 {
+    if (*stack == NULL)
+        return;
     int tmp;
     t_list *current;
 
@@ -25,6 +27,8 @@ void swap_ss(t_list **stack_a, t_list **stack_b)
 
 void push_b(t_list **stack_a, t_list **stack_b)
 {
+    if (*stack_a == NULL)
+        return;
     t_list *current;
     t_list *new;
     int tmp;
@@ -40,6 +44,8 @@ void push_b(t_list **stack_a, t_list **stack_b)
 
 void push_a(t_list **stack_a, t_list **stack_b)
 {
+    if (*stack_b == NULL)
+        return;
     t_list *current;
     t_list *new;
     int tmp;
