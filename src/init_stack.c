@@ -6,17 +6,19 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:31:52 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/09 13:20:12 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:54:49 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 
-static t_list	*setup_stack(char **av, int index, t_list *stack_a)
+static t_list	*setup_stack(char **av, t_list *stack_a)
 {
 	int	result;
+	int index;
 
+	index = 2;
 	result = 0;
 	if (av[2])
 	{
@@ -38,16 +40,16 @@ static t_list	*setup_stack(char **av, int index, t_list *stack_a)
 	return (stack_a);
 }
 
-void	start_push_swap(char **av, t_list *stack_a, t_list *stack_b)
+void	start_push_swap(char **av)
 {
-	int	index;
+	t_list	*stack_a;
+	t_list	*stack_b;	
 
-	index = 2;
-	if (!av[1][0])
+	stack_a = NULL;
+	stack_b = NULL;
+	if (!check_empty_arg(av))
 		display_error("\nEmpty argument\n");
-	else if (!check_empty_arg(av))
-		display_error("\nEmpty argument\n");
-	stack_a = setup_stack(av, index, stack_a);
+	stack_a = setup_stack(av, stack_a);
 	printf("\n");
 	print_stacks(stack_a, stack_b);
 	swap_sa_sb(&stack_b, 'b');

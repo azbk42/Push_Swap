@@ -25,7 +25,7 @@ bool check_empty_arg(char **av);
 t_list *create_stack_a(t_list *stack_a, int number);
 
 
-void start_push_swap(char **av, t_list *stack_a, t_list *stack_b);
+void start_push_swap(char **av);
 void print_stacks(t_list *stack_a, t_list *stack_b); 
 
 
