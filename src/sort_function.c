@@ -58,4 +58,3 @@ void push_a(t_list **stack_a, t_list **stack_b)
     free(current);
     ft_printf("pa\n");
 }
-

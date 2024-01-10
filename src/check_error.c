@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   check_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: azbk <azbk@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:08:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/08 16:40:58 by azbk             ###   ########.fr       */
+/*   Updated: 2024/01/10 18:30:32 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	display_error(const char *message)
+void	display_error(const char *message, t_list *stack_a)
 {
-    ft_printf("\n%s\n\n", message);
+    free_stack(stack_a);
+    ft_printf("\n%s\n", message);
     exit(EXIT_FAILURE);
 }
+
 
 bool check_empty_arg(char **av)
 {
@@ -26,10 +28,10 @@ bool check_empty_arg(char **av)
    while (av[i])
    {
       if (!av[i][0])
-         return false;
+         return (false);
       i++;
    }
-   return true;
+   return (true);
 }
 
 bool check_double(t_list *stack_a, int nb)
@@ -41,9 +43,9 @@ bool check_double(t_list *stack_a, int nb)
     while (current)
     {
         if (current->content == nb)
-            return true;
+            return (true);
         else
             current = current->next;
     }
-    return false;
+    return (false);
 }

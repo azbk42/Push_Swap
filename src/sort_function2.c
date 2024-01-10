@@ -5,22 +5,16 @@ void shift_rra_rrb(t_list **stack, char c)
     if (*stack == NULL)
         return;
     t_list *current;
-    int tmp;
+    t_list *tmp_last;
 
     current = *stack;
     while (current->next->next)
         current = current->next;
-    tmp = current->next->content;
-    free(current->next);
+    tmp_last = current->next;
+    tmp_last->next = *stack;
     current->next = NULL;
-    *stack = create_stack_a(*stack, tmp);
-    current = *stack;
-    if (c == 'a')
-        ft_printf("rra\n");
-    if (c == 'b')
-        ft_printf("rrb\n");
-    if (c == 'r')
-        ft_printf("rrr\n"); 
+    *stack = tmp_last;
+    ft_printf("rr%c\n", c);
 }
 void shift_rrr(t_list **stack_a, t_list **stack_b)
 {
