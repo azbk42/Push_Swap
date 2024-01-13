@@ -1,4 +1,4 @@
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 void shift_rra_rrb(t_list **stack, char c)
 {
@@ -14,7 +14,10 @@ void shift_rra_rrb(t_list **stack, char c)
     tmp_last->next = *stack;
     current->next = NULL;
     *stack = tmp_last;
-    ft_printf("rr%c\n", c);
+    if (c == 'd')
+        ft_printf("rrr\n");
+    else
+        ft_printf("rr%c\n", c);
 }
 void shift_rrr(t_list **stack_a, t_list **stack_b)
 {

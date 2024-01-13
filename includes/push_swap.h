@@ -19,19 +19,24 @@
 
 bool is_sort(t_list **stack);
 void algo_3_number(t_list **stack_a);
-
+void algo_4_5_numbers(t_list **stack_a, t_list **stack_b);
 
 // check des erreurs de parsing
 int atoi_parsing(char *str, int *index, t_list *stack_a);
-bool check_double(t_list *stack_a, int nb);
-void	display_error(const char *message, t_list *stack_a);
+bool check_double(t_list *stack_a);
+void	display_error(char *message, t_list *stack_a);
 bool check_empty_arg(char **av);
 
 // free stack
 void free_stack(t_list *stack);
 
-// initialisation des stacks
-t_list *create_stack_a(t_list *stack_a, int number);
+// find_function, min, max, average, 
+
+int find_place(t_list *stack_a, int target);
+int find_max(t_list *stack);
+int find_min(t_list *stack);
+int find_average(t_list *stack);
+int find_target(t_list *stack, int content_b);
 
 void start_push_swap(char **av);
 void print_stacks(t_list *stack_a, t_list *stack_b); 

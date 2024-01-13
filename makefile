@@ -1,11 +1,11 @@
 NAME = push_swap
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra
 
 LIBFT = ./Libft/libft.a
 SRC_DIR = ./src
-SRC = $(wildcard $(SRC_DIR)/*.c)
+SRC = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(SRC_DIR)/sort_functions/*.c)
 OBJ_DIR = obj
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

@@ -6,16 +6,17 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:08:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/10 18:30:32 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/13 17:46:21 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	display_error(const char *message, t_list *stack_a)
+void	display_error(char *message, t_list *stack_a)
 {
     free_stack(stack_a);
-    ft_printf("\n%s\n", message);
+    ft_putstr_fd(message, 2);
+    ft_putstr_fd("\n", 2);
     exit(EXIT_FAILURE);
 }
 
@@ -34,18 +35,23 @@ bool check_empty_arg(char **av)
    return (true);
 }
 
-bool check_double(t_list *stack_a, int nb)
+bool check_double(t_list *stack_a)
 {
     t_list *current;
+    t_list *prev;
 
-    current = stack_a;
-
-    while (current)
+    prev = stack_a;
+    while (prev->next)
     {
-        if (current->content == nb)
-            return (true);
-        else
-            current = current->next;
+        current = prev->next;
+        while (current)
+        {
+            if (current->content == prev->content)
+                return (true);
+            else
+                current = current->next;    
+        }
+        prev = prev->next;
     }
     return (false);
 }
