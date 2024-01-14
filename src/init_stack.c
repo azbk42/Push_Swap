@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:31:52 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/13 18:46:20 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/14 18:40:45 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,11 +96,13 @@ void	start_push_swap(char **av)
 			swap_sa_sb(&stack_a, 'a');
 	}
 	else if (ft_lstsize(stack_a) == 3)
-		algo_3_number(&stack_a);
+		algo_3_numbers(&stack_a);
 	else if (ft_lstsize(stack_a) == 4 || ft_lstsize(stack_a) == 5)
-	 	algo_4_5_numbers(&stack_a, &stack_b);
-	// ft_printf("\n");
-	// print_stacks(stack_a, stack_b);
+		init_algo_4_5(&stack_a, &stack_b);
+	else
+		init_final_algo(&stack_a, &stack_b);
+	ft_printf("\n");
+	print_stacks(stack_a, stack_b);
 	if (stack_a)
 		free_stack(stack_a);
 	if (stack_b)

@@ -16,7 +16,7 @@ SRC2OBJS = ${SRC2:.c=.o}
 RM = rm -f
 
 .c.o:
-	${CC} -c ${CFLAGS} $< -o ${<:.c=.o}
+	${CC} -c ${CFLAGS} -MMD -MP $< -o ${<:.c=.o}
 
 ${NAME}: ${OBJS} ${BONUSOBJS} ${SRC2OBJS}
 	@ar rc ${NAME} ${OBJS} ${BONUSOBJS} ${SRC2OBJS}
@@ -31,5 +31,5 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+-include $(DEPS)
 

@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:00:54 by azbreak           #+#    #+#             */
-/*   Updated: 2024/01/09 12:59:06 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/14 16:54:03 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,17 @@
 
 # include "GNL/get_next_line.h"
 # include "ft_printf/ft_printf.h"
-# include <ctype.h>
 # include <fcntl.h>
-# include <math.h>
 # include <stdbool.h>
 # include <stddef.h>
-# include <stdint.h>
-# include <stdio.h>
 # include <stdlib.h>
-# include <string.h>
 # include <unistd.h>
 
 typedef struct s_list
 {
 	int				content;
+	int				count_operation;
+	int				position;
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
