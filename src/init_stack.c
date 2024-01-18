@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:31:52 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/18 17:58:38 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:09:53 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static t_list	*setup_stack(char **av, t_list *stack_a)
 	if (av[2])
 	{
 		av[1] = join_av1(av);
+		if (!av[1])
+			return (NULL);
 		flag = true;
 	}
 	while (av[1][index])
@@ -99,7 +101,7 @@ void	start_push_swap(char **av)
 		algo_3_numbers(&stack_a);
 	else if (ft_lstsize(stack_a) == 4 || ft_lstsize(stack_a) == 5)
 		init_algo_4_5(&stack_a, &stack_b);
-	else
+	else if (!is_sort(&stack_a))
 		init_final_algo(&stack_a, &stack_b);
 	if (stack_a)
 		free_stack(stack_a);

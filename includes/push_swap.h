@@ -56,7 +56,6 @@ int		find_target(t_list *stack, int content_b);
 int		find_final_target(t_list *stack, int content);
 
 void	start_push_swap(char **av);
-void	print_stacks(t_list *stack_a, t_list *stack_b);
 
 // final_algo
 

@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:24:13 by azbreak           #+#    #+#             */
-/*   Updated: 2024/01/13 16:22:09 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/18 18:51:18 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	int		len;
 	char	*tab;
 	int		j;
-
+	
+	if (!s1 || !s2)
+		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2);
 	i = 0;
 	tab = malloc(len * sizeof(char) + 1);
@@ -31,11 +33,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	j = 0;
 	while (s2[j])
-	{
-		tab[i] = s2[j];
-		i++;
-		j++;
-	}
+		tab[i++] = s2[j++];
 	tab[i] = '\0';
 	return (tab);
 }

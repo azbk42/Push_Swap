@@ -14,7 +14,6 @@ SRC := sort_functions/sort_function.c \
 		init_stack.c \
 		main.c \
 		parsing.c \
-		print_stack.c \
 		final_algo.c \
 		set_position.c \
 		count_operation.c
