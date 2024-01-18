@@ -6,14 +6,16 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:08:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/14 16:17:09 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:52:22 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	display_error(char *message, t_list *stack_a)
+void	display_error(char *message, t_list *stack_a, char **av)
 {
+	if (av[2])
+		free(av[1]);
 	free_stack(stack_a);
 	ft_putstr_fd(message, 2);
 	ft_putstr_fd("\n", 2);

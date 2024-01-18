@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:47:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/14 19:39:55 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:07:39 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,19 +68,15 @@ int find_final_target(t_list *stack, int content)
     int target;
 
     current = stack;
-    target = find_max(stack);
-    
-    if (content > find_max(stack))
-        return (find_min(stack));
-    if (content < find_min(stack))
-        return (target);
     target = 0;
-    while (current)
-    {
-        if (content > target && target < current->content && current->content < content)
-            target = current->content;
-        current = current->next;
-    }
+    if (content < find_min(stack) || content > find_max(stack))
+		return (find_max(stack));
+	while (current)
+	{
+		if (current->content < content && current->content > target)
+			target = current->content;
+		current = current->next;
+	}
     return (target);
 }
 

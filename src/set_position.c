@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_position.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:08:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/18 17:53:11 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/15 18:12:48 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int ac, char **av)
+void	set_position(t_list **stack)
 {
-	if (ac > 1)
-		start_push_swap(av);
-	else
-		display_error("\nError: no argument\n", NULL, NULL);
-	return (0);
+	t_list	*current;
+	int		i;
+
+	i = 0;
+	current = *stack;
+	if (stack)
+	{
+		while (current)
+		{
+			current->position = i;
+			current = current->next;
+			i++;
+		}
+	}
 }

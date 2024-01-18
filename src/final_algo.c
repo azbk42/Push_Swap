@@ -6,76 +6,117 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:51:03 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/14 19:31:20 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/16 17:44:40 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int count_all_operations(t_list **stack_a, t_list **stack_b, int content, int target)
+void final_count(t_data *count)
 {
-    int pos_content;
-    int pos_target;
-    int count;
-
-    pos_content = find_position(*stack_a, content);
-    if (pos_content > ft_lstsize(*stack_a) / 2)
-        pos_content = ft_lstsize(*stack_a) - pos_content;
-    pos_target = find_position(*stack_b, target);
-    if (pos_target > ft_lstsize(*stack_b) / 2)
-        pos_target = ft_lstsize(*stack_b) - pos_target;
+    while (count->ra > 0 && count->rb > 0) 
+    {
+        count->rr++;
+        count->ra--;
+        count->rb--;
+    }
+    while (count->rra > 0 && count->rrb > 0) 
+    {
+        count->rrr++;
+        count->rra--;
+        count->rrb--;
+    }
+    // ft_printf("------------\n");
+    // ft_printf("rr = %d\n", count->rr);
+    // ft_printf("rrr = %d\n", count->rrr);
+    // ft_printf("ra = %d\n", count->ra);
+    // ft_printf("rb = %d\n", count->rb);
+    // ft_printf("rra = %d\n", count->rra);
+    // ft_printf("rrb = %d\n", count->rrb);
     
-    count = pos_target + pos_content;
-    ft_printf("count = %d\n", count);
-    return (count);
-    
-    
-   
-    
-        
 }
 
-int	find_cheapest(t_list **stack_a, t_list **stack_b)
+void count_final_operation(t_list **stack_a, t_list **stack_b, t_data *count)
 {
-	t_list	*current;
-	int		cheapest;
-    int     count;
-	int		target;
 
-	current = *stack_a;
-	while (current)
+	count->rrb = 0;
+	count->rra = 0;
+    count->rr = 0;
+    count->rrr = 0;
+	count->ra = find_position(*stack_a, count->cheapest);
+	if (count->ra > ft_lstsize(*stack_a) / 2)
 	{
-		target = find_final_target((*stack_b), current->content);
-        ft_printf ("target = %d\n", target);
-		current->count_operation = count_all_operations(stack_a, stack_b,
-				current->content, target);
-        current = current->next;
+		count->rra = ft_lstsize(*stack_a) - count->ra;
+		count->ra = 0;
 	}
-    current = *stack_a;
-    cheapest = current->content;
-    count = current->count_operation;
-    while (current)
-    {
-        if (current->count_operation < count)
-            cheapest = current->content;
-        current = current->next;
-    }
-	return (cheapest);
+	count->rb = find_position(*stack_b, count->target);
+	if (count->rb > ft_lstsize(*stack_b) / 2)
+	{
+		count->rrb = ft_lstsize(*stack_b) - count->rb;
+		count->rb = 0;
+	}
+	final_count(count);
+}
+
+// void moove_cheapest(t_list **stack_a, t_list **stack_b, int cheapest)
+// {
+//     int position_a;
+//     int position_b;
+
+//     position_a = find_position(*stack_a, cheapest);
+//     position_b = find_position(*stack_b,find_final_target(*stack_b, cheapest));
+//     while (position_a > 0)
+//     {
+//         if (position_a > ft_lstsize(*stack_a) / 2)
+//             shift_rra_rrb(stack_a, 'a');
+//         else
+//             shift_ra_rb(stack_a, 'a');
+//         position_a = find_position(*stack_a, cheapest);
+//     }
+//     while (position_b > 0)
+//     {
+//         if (position_b > ft_lstsize(*stack_b) / 2)
+//             shift_rra_rrb(stack_b, 'b');
+//         else
+//             shift_ra_rb(stack_b, 'b');
+//         position_b = find_position(*stack_b,find_final_target(*stack_b, cheapest));
+//     }
+//     push_b(stack_a, stack_b);
+// }
+
+
+void moove_cheapest(t_list **stack_a, t_list **stack_b, t_data *data)
+{
+    while (data->rr--)
+        shift_rr(stack_a, stack_b);
+    while (data->rrr--)
+        shift_rrr(stack_a, stack_b);
+    while (data->ra--)
+        shift_ra_rb(stack_a, 'a');
+    while (data->rb--)
+        shift_ra_rb(stack_b, 'b');
+    while (data->rra--)
+        shift_rra_rrb(stack_a, 'a');
+    while (data->rrb--)
+        shift_rra_rrb(stack_b, 'b');
+    push_b(stack_a, stack_b);
 }
 
 void	init_final_algo(t_list **stack_a, t_list **stack_b)
 {
-	if (!stack_a)
+	if (!*stack_a)
 		return ;
-	int cheapest;
+    t_data moove;
 
 	push_b(stack_a, stack_b);
 	push_b(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-    push_b(stack_a, stack_b);
-	push_b(stack_a, stack_b);
-    print_stacks(*stack_a, *stack_b);
-    ft_printf("\n");
-	cheapest = find_cheapest(stack_a, stack_b);
-    ft_printf("cheapest = %d\n", cheapest);
+    while (ft_lstsize(*stack_a) > 3)
+    {
+        moove.cheapest = find_cheapest(stack_a, stack_b);
+        moove.target = find_final_target(*stack_b, moove.cheapest);
+        count_final_operation(stack_a, stack_b, &moove);
+        moove_cheapest(stack_a, stack_b, &moove);
+    }
+    algo_3_numbers(stack_a);
+    algo_4_5_numbers(stack_a, stack_b);
 }

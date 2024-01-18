@@ -21,29 +21,33 @@ void	shift_rra_rrb(t_list **stack, char c)
     else if (c == 'b')
 		ft_printf("rrb\n");
 }
+
 void	shift_rrr(t_list **stack_a, t_list **stack_b)
 {
 	shift_rra_rrb(stack_a, 'r');
 	shift_rra_rrb(stack_b, 'd');
 }
+
 void	shift_rr(t_list **stack_a, t_list **stack_b)
 {
 	shift_ra_rb(stack_a, 's');
 	shift_ra_rb(stack_b, 'd');
 }
+
 void	shift_ra_rb(t_list **stack, char c)
 {
 	t_list	*current;
-	t_list	*new;
-	int		tmp;
+	t_list	*first;
 
-	if (*stack == NULL)
+	if (*stack == NULL || (*stack)->next == NULL)
 		return ;
 	current = *stack;
-	tmp = current->content;
-	new = ft_lstnew(tmp);
-	*stack = current->next;
-	ft_lstadd_back(stack, new);
+	first = *stack;
+	while (current->next != NULL)
+		current = current->next;
+	*stack = first->next;
+	first->next = NULL;
+	current->next = first;
 	if (c == 'a')
 		ft_printf("ra\n");
 	else if (c == 'b')

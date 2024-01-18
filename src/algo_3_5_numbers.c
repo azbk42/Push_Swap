@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:05:59 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/14 18:36:47 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/16 15:27:21 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,7 @@ void	algo_4_5_numbers(t_list **stack_a, t_list **stack_b)
 
 	while (ft_lstsize(*stack_b) > 0)
 	{
-        // ft_printf("\n");
-	    // print_stacks(*stack_a, *stack_b);
-        // ft_printf("\n");
-        
 		target = find_target(*stack_a, (*stack_b)->content);
-       // ft_printf("target = %d\n", target);
 		while ((*stack_a)->content != target)
 		{
 			if (find_position(*stack_a, target) <= ft_lstsize(*stack_a) / 2)
@@ -55,11 +50,12 @@ void	algo_4_5_numbers(t_list **stack_a, t_list **stack_b)
 			else
 				shift_rra_rrb(stack_a, 'a');
 		}
+		//print_stacks(*stack_a, *stack_b);
 		push_a(stack_a, stack_b);
 	}
 	while ((*stack_a)->content != find_min(*stack_a))
 	{
-		if (find_position(*stack_a, find_min(*stack_a)) < ft_lstsize(*stack_a))
+		if (find_position(*stack_a, find_min(*stack_a)) >= ft_lstsize(*stack_a) / 2)
 			shift_rra_rrb(stack_a, 'a');
 		else
 			shift_ra_rb(stack_a, 'a');
@@ -74,7 +70,7 @@ void	init_algo_4_5(t_list **stack_a, t_list **stack_b)
 	if (ft_lstsize(*stack_a) == 4)
 		push_b(stack_a, stack_b);
 	algo_3_numbers(stack_a);
-	if (*stack_b && (*stack_b)->next)
+	if (ft_lstsize(*stack_b) == 2)
 		if ((*stack_b)->content < (*stack_b)->next->content)
 			swap_sa_sb(stack_b, 'b');
 	algo_4_5_numbers(stack_a, stack_b);

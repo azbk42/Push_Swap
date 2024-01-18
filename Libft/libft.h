@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:00:54 by azbreak           #+#    #+#             */
-/*   Updated: 2024/01/14 16:54:03 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/15 17:56:53 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_list
 	int				content;
 	int				count_operation;
 	int				position;
+	int				target;
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;

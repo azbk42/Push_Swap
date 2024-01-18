@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:31:52 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/14 18:40:45 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/18 17:58:38 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,13 +68,13 @@ static t_list	*setup_stack(char **av, t_list *stack_a)
 	}
 	while (av[1][index])
 	{
-		result = atoi_parsing(av[1], &index, stack_a);
+		result = atoi_parsing(av, &index, stack_a);
 		stack_a = create_stack_a(stack_a, result);
 	}
+	if (check_double(stack_a))
+		return (display_error(DOUBLE_ERROR, stack_a, av), NULL);
 	if (flag == true)
 		free(av[1]);
-	if (check_double(stack_a))
-		return (display_error(DOUBLE_ERROR, stack_a), NULL);
 	return (stack_a);
 }
 
@@ -86,7 +86,7 @@ void	start_push_swap(char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (!check_empty_arg(av))
-		display_error("Empty argument", stack_a);
+		display_error("Empty argument", stack_a, NULL);
 	stack_a = setup_stack(av, stack_a);
 	if (!stack_a)
 		return ;
@@ -101,8 +101,6 @@ void	start_push_swap(char **av)
 		init_algo_4_5(&stack_a, &stack_b);
 	else
 		init_final_algo(&stack_a, &stack_b);
-	ft_printf("\n");
-	print_stacks(stack_a, stack_b);
 	if (stack_a)
 		free_stack(stack_a);
 	if (stack_b)

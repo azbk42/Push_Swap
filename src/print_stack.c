@@ -27,4 +27,5 @@ void	print_stacks(t_list *stack_a, t_list *stack_b)
 		ft_printf("\n");
 	}
 	ft_printf("A      B\n");
+	ft_printf("\n");
 }
