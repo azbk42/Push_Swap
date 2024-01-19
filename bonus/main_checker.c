@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 15:08:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/19 11:52:49 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/19 13:28:53 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	init_bonus(t_list *stack_a, t_list *stack_b)
 		exec_bonus(&stack_a, &stack_b, line);
 		free(line);
 	}
-	if (is_sort(&stack_a), ft_lstsize(stack_b) == 0)
+	if (is_sort(&stack_a) && ft_lstsize(stack_b) == 0)
 		ft_putstr_fd("OK\n", 1);
 	else
 		ft_putstr_fd("KO\n", 1);
