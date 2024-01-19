@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_position.c                                     :+:      :+:    :+:   */
+/*   free_stack_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 15:08:51 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/15 18:12:48 by emauduit         ###   ########.fr       */
+/*   Created: 2024/01/13 17:06:46 by emauduit          #+#    #+#             */
+/*   Updated: 2024/01/19 11:35:03 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
-void	set_position(t_list **stack)
+void	free_stack(t_list *stack)
 {
 	t_list	*current;
-	int		i;
+	t_list	*next;
 
-	i = 0;
-	current = *stack;
-	if (stack)
+	current = stack;
+	while (current)
 	{
-		while (current)
-		{
-			current->position = i;
-			current = current->next;
-			i++;
-		}
+		next = current->next;
+		free(current);
+		current = next;
 	}
 }

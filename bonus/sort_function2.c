@@ -6,11 +6,11 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:26:59 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/18 19:27:00 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:34:54 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/checker.h"
 
 void	shift_rra_rrb(t_list **stack, char c)
 {
@@ -36,14 +36,14 @@ void	shift_rra_rrb(t_list **stack, char c)
 
 void	shift_rrr(t_list **stack_a, t_list **stack_b)
 {
-	shift_rra_rrb(stack_a, 'r');
-	shift_rra_rrb(stack_b, 'd');
+	shift_rra_rrb(stack_a, '0');
+	shift_rra_rrb(stack_b, '0');
 }
 
 void	shift_rr(t_list **stack_a, t_list **stack_b)
 {
-	shift_ra_rb(stack_a, 's');
-	shift_ra_rb(stack_b, 'd');
+	shift_ra_rb(stack_a, '0');
+	shift_ra_rb(stack_b, '0');
 }
 
 void	shift_ra_rb(t_list **stack, char c)

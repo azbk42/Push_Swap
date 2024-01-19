@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:47:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/16 17:07:39 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:20:37 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ int	find_position(t_list *stack_a, int target)
 	return (place);
 }
 
-int find_final_target(t_list *stack, int content)
+int	find_final_target(t_list *stack, int content)
 {
-    t_list *current;
-    int target;
+	t_list	*current;
+	int		target;
 
-    current = stack;
-    target = 0;
-    if (content < find_min(stack) || content > find_max(stack))
+	current = stack;
+	target = 0;
+	if (content < find_min(stack) || content > find_max(stack))
 		return (find_max(stack));
 	while (current)
 	{
@@ -77,24 +77,23 @@ int find_final_target(t_list *stack, int content)
 			target = current->content;
 		current = current->next;
 	}
-    return (target);
+	return (target);
 }
 
-int find_target(t_list *stack, int content_b)
+int	find_target(t_list *stack, int content_b)
 {
-    t_list *current;
-    int target;
+	t_list	*current;
+	int		target;
 
-    current = stack;
-    target = find_max(stack);
-    
-    if (content_b > target)
-        return (find_min(stack));
-    while (current)
-    {
-        if (current->content < target && current->content > content_b)
-            target = current->content;
-        current = current->next;
-    }
-    return (target);
+	current = stack;
+	target = find_max(stack);
+	if (content_b > target)
+		return (find_min(stack));
+	while (current)
+	{
+		if (current->content < target && current->content > content_b)
+			target = current->content;
+		current = current->next;
+	}
+	return (target);
 }

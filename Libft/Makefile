@@ -13,21 +13,28 @@ OBJS = ${SRC:.c=.o}
 BONUSOBJS = ${BONUSSRC:.c=.o}
 SRC2OBJS = ${SRC2:.c=.o}
 
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+BLUE = \033[0;94m
+CYAN = \033[0;96m
+
 RM = rm -f
 
 .c.o:
-	${CC} -c ${CFLAGS} -MMD -MP $< -o ${<:.c=.o}
+	@${CC} -c ${CFLAGS} -MMD -MP $< -o ${<:.c=.o}
+	@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
 
 ${NAME}: ${OBJS} ${BONUSOBJS} ${SRC2OBJS}
 	@ar rc ${NAME} ${OBJS} ${BONUSOBJS} ${SRC2OBJS}
+	@echo "$(GREEN)libft compiled!$(DEF_COLOR)"
 
 all: ${NAME}
 
 clean:
-	${RM} ${OBJS} ${BONUSOBJS} ${SRC2OBJS}
+	@${RM} ${OBJS} ${BONUSOBJS} ${SRC2OBJS}
 
 fclean: clean
-	${RM} ${NAME}
+	@${RM} ${NAME}
 
 re: fclean all
 

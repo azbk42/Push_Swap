@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:05:59 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/16 15:27:21 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/18 19:22:27 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ void	algo_4_5_numbers(t_list **stack_a, t_list **stack_b)
 			else
 				shift_rra_rrb(stack_a, 'a');
 		}
-		//print_stacks(*stack_a, *stack_b);
 		push_a(stack_a, stack_b);
 	}
 	while ((*stack_a)->content != find_min(*stack_a))
 	{
-		if (find_position(*stack_a, find_min(*stack_a)) >= ft_lstsize(*stack_a) / 2)
+		if (find_position(*stack_a, find_min(*stack_a)) >= ft_lstsize(*stack_a)
+			/ 2)
 			shift_rra_rrb(stack_a, 'a');
 		else
 			shift_ra_rb(stack_a, 'a');

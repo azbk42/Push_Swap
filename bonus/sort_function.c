@@ -6,11 +6,11 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:26:45 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/18 19:26:46 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:34:50 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../includes/checker.h"
 
 void	swap_sa_sb(t_list **stack, char c)
 {
@@ -34,7 +34,7 @@ void	swap_sa_sb(t_list **stack, char c)
 void	swap_ss(t_list **stack_a, t_list **stack_b)
 {
 	swap_sa_sb(stack_a, '0');
-	swap_sa_sb(stack_b, 's');
+	swap_sa_sb(stack_b, '0');
 }
 
 void	push_a(t_list **stack_a, t_list **stack_b)
@@ -47,7 +47,6 @@ void	push_a(t_list **stack_a, t_list **stack_b)
 	*stack_b = current->next;
 	current->next = *stack_a;
 	*stack_a = current;
-	ft_printf("pa\n");
 }
 
 void	push_b(t_list **stack_a, t_list **stack_b)
@@ -60,5 +59,4 @@ void	push_b(t_list **stack_a, t_list **stack_b)
 	*stack_a = current->next;
 	current->next = *stack_b;
 	*stack_b = current;
-	ft_printf("pb\n");
 }
