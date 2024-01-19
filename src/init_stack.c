@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:31:52 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/18 19:09:53 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/19 13:22:46 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,14 @@ void	start_push_swap(char **av)
 	stack_a = setup_stack(av, stack_a);
 	if (!stack_a)
 		return ;
-	if (ft_lstsize(stack_a) == 2)
+	if (ft_lstsize(stack_a) == 2 && !is_sort(&stack_a))
 	{
 		if (stack_a->content > stack_a->next->content)
 			swap_sa_sb(&stack_a, 'a');
 	}
-	else if (ft_lstsize(stack_a) == 3)
+	else if (ft_lstsize(stack_a) == 3 && !is_sort(&stack_a))
 		algo_3_numbers(&stack_a);
-	else if (ft_lstsize(stack_a) == 4 || ft_lstsize(stack_a) == 5)
+	else if ((ft_lstsize(stack_a) <= 5) && !is_sort(&stack_a))
 		init_algo_4_5(&stack_a, &stack_b);
 	else if (!is_sort(&stack_a))
 		init_final_algo(&stack_a, &stack_b);
