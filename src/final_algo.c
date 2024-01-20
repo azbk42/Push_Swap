@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:51:03 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/18 19:20:51 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:47:38 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,54 @@ void	final_count(t_data *count)
 	}
 }
 
-void	count_final_operation(t_list **stack_a, t_list **stack_b, t_data *count)
+static void	moove_cheapest(t_list **stack_a, t_list **stack_b, t_data *data)
+{
+	while (data->rr--)
+		shift_rr(stack_a, stack_b);
+	while (data->rrr--)
+		shift_rrr(stack_a, stack_b);
+	while (data->ra--)
+		shift_ra_rb(stack_a, 'a');
+	while (data->rb--)
+		shift_ra_rb(stack_b, 'b');
+	while (data->rra--)
+		shift_rra_rrb(stack_a, 'a');
+	while (data->rrb--)
+		shift_rra_rrb(stack_b, 'b');
+	push_b(stack_a, stack_b);
+}
+
+void	print_stacks(t_list *stack_a, t_list *stack_b)
+{
+	t_list	*current_a;
+	t_list	*current_b;
+
+	current_a = stack_a;
+	current_b = stack_b;
+	while (current_a || current_b)
+	{
+		if (current_a)
+		{
+			ft_printf("%d ", current_a->content);
+			current_a = current_a->next;
+		}
+		else
+			ft_printf("_  ");
+		ft_printf("    ");
+		if (current_b)
+		{
+			ft_printf("%d", current_b->content);
+			current_b = current_b->next;
+		}
+		else
+			ft_printf("_");
+		ft_printf("\n");
+	}
+	ft_printf("A      B\n");
+}
+
+static void	count_operation_a_to_b(t_list **stack_a, t_list **stack_b,
+		t_data *count)
 {
 	count->rrb = 0;
 	count->rra = 0;
@@ -49,23 +96,6 @@ void	count_final_operation(t_list **stack_a, t_list **stack_b, t_data *count)
 	final_count(count);
 }
 
-void	moove_cheapest(t_list **stack_a, t_list **stack_b, t_data *data)
-{
-	while (data->rr--)
-		shift_rr(stack_a, stack_b);
-	while (data->rrr--)
-		shift_rrr(stack_a, stack_b);
-	while (data->ra--)
-		shift_ra_rb(stack_a, 'a');
-	while (data->rb--)
-		shift_ra_rb(stack_b, 'b');
-	while (data->rra--)
-		shift_rra_rrb(stack_a, 'a');
-	while (data->rrb--)
-		shift_rra_rrb(stack_b, 'b');
-	push_b(stack_a, stack_b);
-}
-
 void	init_final_algo(t_list **stack_a, t_list **stack_b)
 {
 	t_data	moove;
@@ -77,8 +107,8 @@ void	init_final_algo(t_list **stack_a, t_list **stack_b)
 	while (ft_lstsize(*stack_a) > 3)
 	{
 		moove.cheapest = find_cheapest(stack_a, stack_b);
-		moove.target = find_final_target(*stack_b, moove.cheapest);
-		count_final_operation(stack_a, stack_b, &moove);
+		moove.target = find_target_b(*stack_b, moove.cheapest);
+		count_operation_a_to_b(stack_a, stack_b, &moove);
 		moove_cheapest(stack_a, stack_b, &moove);
 	}
 	algo_3_numbers(stack_a);

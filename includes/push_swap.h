@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:30:08 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/19 11:26:41 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:47:03 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,17 @@ typedef struct s_data
 // define error
 # define DOUBLE_ERROR "Error: double number"
 # define NO_DIGIT_ERROR "Error: non digit number find"
-# define INT_MAX_MIN_ERROR \
-	"Error: number is more than INT_MAX \
-							or less than INT_MIN"
+# define INT_MAX_MIN_ERROR "Error: INT_MAX INT_MIN"
 
-// algo 3 numbers
 // check if the list is sort in ascending order
 bool	is_sort(t_list **stack);
+
+// algo 3 to 5 numbers
 void	algo_3_numbers(t_list **stack_a);
 void	init_algo_4_5(t_list **stack_a, t_list **stack_b);
 void	algo_4_5_numbers(t_list **stack_a, t_list **stack_b);
 
-// check des erreurs de parsing
+// check parsing error
 
 int		atoi_parsing(char **str, int *index, t_list *stack_a);
 bool	check_double(t_list *stack_a);
@@ -61,10 +60,9 @@ void	free_stack(t_list *stack);
 int		find_position(t_list *stack_a, int target);
 int		find_max(t_list *stack);
 int		find_min(t_list *stack);
-int		find_average(t_list *stack);
 // find the position in the list of the target
-int		find_target(t_list *stack, int content_b);
-int		find_final_target(t_list *stack, int content);
+int		find_target_a(t_list *stack, int content_b);
+int		find_target_b(t_list *stack, int content);
 
 void	start_push_swap(char **av);
 
@@ -75,8 +73,6 @@ void	init_final_algo(t_list **stack_a, t_list **stack_b);
 
 // count_operation.c
 void	final_count(t_data *count);
-void	count_final_operation(t_list **stack_a, t_list **stack_b,
-			t_data *count);
 
 // sort_functions:
 // swap the first 2 element
@@ -92,7 +88,5 @@ void	shift_rr(t_list **stack_a, t_list **stack_b);
 // shift down all elements of stack by 1
 void	shift_rra_rrb(t_list **stack, char c);
 void	shift_rrr(t_list **stack_a, t_list **stack_b);
-
-// bonus
 
 #endif

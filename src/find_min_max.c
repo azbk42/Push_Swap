@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 10:47:56 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/18 19:20:37 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:47:46 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,13 @@ int	find_position(t_list *stack_a, int target)
 	return (place);
 }
 
-int	find_final_target(t_list *stack, int content)
+int	find_target_b(t_list *stack, int content)
 {
 	t_list	*current;
 	int		target;
 
 	current = stack;
-	target = 0;
+	target = INT_MIN;
 	if (content < find_min(stack) || content > find_max(stack))
 		return (find_max(stack));
 	while (current)
@@ -80,7 +80,7 @@ int	find_final_target(t_list *stack, int content)
 	return (target);
 }
 
-int	find_target(t_list *stack, int content_b)
+int	find_target_a(t_list *stack, int content_b)
 {
 	t_list	*current;
 	int		target;

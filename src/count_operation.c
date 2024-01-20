@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 16:51:03 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/18 19:26:19 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:22:29 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	find_cheapest(t_list **stack_a, t_list **stack_b)
 	current = *stack_a;
 	while (current)
 	{
-		target = find_final_target((*stack_b), current->content);
+		target = find_target_b((*stack_b), current->content);
 		current->count_operation = count_to_find_cheapest(stack_a, stack_b,
 				current->content, target);
 		current = current->next;

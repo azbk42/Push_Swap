@@ -32,6 +32,8 @@ all: ${NAME}
 
 clean:
 	@${RM} ${OBJS} ${BONUSOBJS} ${SRC2OBJS}
+	@${RM} Libft/GNL/*.d
+	@${RM} Libft/ft_printf/*.d
 
 fclean: clean
 	@${RM} ${NAME}

@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:05:59 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/18 19:22:27 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:20:22 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	algo_4_5_numbers(t_list **stack_a, t_list **stack_b)
 
 	while (ft_lstsize(*stack_b) > 0)
 	{
-		target = find_target(*stack_a, (*stack_b)->content);
+		target = find_target_a(*stack_a, (*stack_b)->content);
 		while ((*stack_a)->content != target)
 		{
 			if (find_position(*stack_a, target) <= ft_lstsize(*stack_a) / 2)
