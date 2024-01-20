@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:31:52 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/19 13:22:46 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:57:03 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	start_push_swap(char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (!check_empty_arg(av))
-		display_error("Empty argument", stack_a, NULL);
+		display_error("Error", stack_a, NULL);
 	stack_a = setup_stack(av, stack_a);
 	if (!stack_a)
 		return ;

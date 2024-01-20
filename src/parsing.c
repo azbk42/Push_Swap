@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:26:32 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/18 19:26:33 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:56:41 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	atoi_parsing(char **str, int *index, t_list *stack_a)
 		if (str[1][(*index)++] == '-')
 			divid = -1;
 	if (!ft_isdigit(str[1][*index]))
-		display_error(NO_DIGIT_ERROR, stack_a, str);
+		display_error("Error", stack_a, str);
 	while (ft_isdigit(str[1][*index]))
 	{
 		result = (result * 10) + (str[1][(*index)++] - '0');
 		if ((result * divid) > INT_MAX || (result * divid) < INT_MIN)
-			display_error(INT_MAX_MIN_ERROR, stack_a, str);
+			display_error("Error", stack_a, str);
 	}
 	result = result * divid;
 	return (result);
