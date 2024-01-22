@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 16:31:52 by azbk              #+#    #+#             */
-/*   Updated: 2024/01/20 14:57:03 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/20 17:37:12 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,6 @@ static t_list	*create_stack_a(t_list *stack_a, int number)
 	return (stack_a);
 }
 
-/**
- * use ft_strjoin if more than 1 str is send to init stack
- */
 static char	*join_av1(char **av)
 {
 	char	*tmp;
@@ -74,7 +71,7 @@ static t_list	*setup_stack(char **av, t_list *stack_a)
 		stack_a = create_stack_a(stack_a, result);
 	}
 	if (check_double(stack_a))
-		return (display_error(DOUBLE_ERROR, stack_a, av), NULL);
+		return (display_error("Error", stack_a, av), NULL);
 	if (flag == true)
 		free(av[1]);
 	return (stack_a);

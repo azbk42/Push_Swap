@@ -6,7 +6,7 @@
 /*   By: emauduit <emauduit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/18 19:30:08 by emauduit          #+#    #+#             */
-/*   Updated: 2024/01/20 14:47:03 by emauduit         ###   ########.fr       */
+/*   Updated: 2024/01/20 17:47:32 by emauduit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,6 @@ typedef struct s_data
 	int	target;
 	int	count;
 }		t_data;
-
-// define error
-# define DOUBLE_ERROR "Error: double number"
-# define NO_DIGIT_ERROR "Error: non digit number find"
-# define INT_MAX_MIN_ERROR "Error: INT_MAX INT_MIN"
 
 // check if the list is sort in ascending order
 bool	is_sort(t_list **stack);
